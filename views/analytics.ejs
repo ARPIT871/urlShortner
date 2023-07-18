@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kataHua</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="main-title">Short URl</h1>
+        <section class="section-1">
+            <div class="url-form">
+                <label class="label">Your Shortened URL is Here</label>
+                <textarea class='url-input inner-text' type="text">http://localhost:8001/url/<%= id %> </textarea>
+            <div class="btn-box">   
+                 <button class="shortUrl-btn" style="display: inline-block;">Redirect</button>
+                <button  class="copy-btn shortUrl-btn " >Copy Link</button>
+            </div>
+
+                <p class="firstPara">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ShortURL is a free tool to shorten URLs and generate
+                    short links</br>
+                    URL shortner allows to create a shortened link making it easy to share</p>
+            </div>
+        </section>
+        <section class="section-2">
+
+            <h2 class="second-title">Want more project like this?</h2>
+            <p class="secondPara"> <%= totalClicks %></p>
+            <a href="https://github.com/ARPIT871"><button class="github-btn">Github Link</button></a>
+        </section>
+
+    </div>
+    <script>
+        const redirectbtn = document.querySelector('.shortUrl-btn');
+        const textarea = document.querySelector('.url-input');
+        const copybtn=document.querySelector('.copy-btn');
+       
+        const value = textarea.value;
+        redirectbtn.addEventListener('click', () => {
+            window.location.href = value;
+            
+        })
+        copybtn.addEventListener('click', () => {
+            copyColor(value)
+        })
+        const copyColor = (Value) => {
+            
+            navigator.clipboard.writeText(value).then(() => {
+               copybtn.innerText = 'Copied';
+                setTimeout(() => copybtn.innerText ='Copy Link' , 1000);
+            }).catch(() => alert("Failed to copy the link"));//showing alert
+        }
+    </script>
+
+</body>
+
+</html>
